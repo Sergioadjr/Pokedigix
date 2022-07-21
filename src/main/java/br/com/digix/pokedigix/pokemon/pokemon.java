@@ -1,15 +1,27 @@
 package br.com.digix.pokedigix.pokemon;
-public class pokemon {
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Pokemon {
+    
+@Id
+@GeneratedValue(strategy = GenerationType.AUTO)
+Long id;
 
 String nome; 
 String tipo; 
 String genero;
 int nivel;
 int felicidade;
-int altura;
-int peso;
+double altura;
+double peso;
 
-public pokemon(String nome, String tipo, String genero, int nivel, int felicidade, int altura, int peso) {
+
+public Pokemon (String nome, String tipo, String genero, int nivel, int felicidade, double altura, double peso) {
     this.nome = nome;
     this.tipo = tipo;
     this.genero = genero;
@@ -17,61 +29,53 @@ public pokemon(String nome, String tipo, String genero, int nivel, int felicidad
     this.felicidade = felicidade;
     this.altura = altura;
     this.peso = peso;
+}
+
+public Long getId() {
+    return this.id;
 }
 
 public String getNome() {
-    return nome;
+    return this.nome;
 }
-
 public void setNome(String nome) {
     this.nome = nome;
 }
-
 public String getTipo() {
-    return tipo;
+    return this.tipo;
 }
-
 public void setTipo(String tipo) {
     this.tipo = tipo;
 }
-
 public String getGenero() {
-    return genero;
+    return this.genero;
 }
-
 public void setGenero(String genero) {
     this.genero = genero;
 }
-
 public int getNivel() {
-    return nivel;
+    return this.nivel;
 }
-
 public void setNivel(int nivel) {
     this.nivel = nivel;
 }
-
 public int getFelicidade() {
-    return felicidade;
+    return this.felicidade;
 }
-
 public void setFelicidade(int felicidade) {
     this.felicidade = felicidade;
 }
-
-public int getAltura() {
-    return altura;
+public double getAltura() {
+    return this.altura;
 }
-
-public void setAltura(int altura) {
+public void setAltura(double altura) {
     this.altura = altura;
 }
-
-public int getPeso() {
-    return peso;
+public double getPeso() {
+    return this.peso;
+}
+public void setPeso(double peso) {
+    this.peso = peso;
 }
 
-public void setPeso(int peso) {
-    this.peso = peso;
-} 
 }
