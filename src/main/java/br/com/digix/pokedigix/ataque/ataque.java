@@ -7,6 +7,10 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import br.com.digix.pokedigix.tipo.Tipo;
 
 @Entity
 public class Ataque {
@@ -33,14 +37,26 @@ private String descricao_ataque;
 @Column (nullable = false)
 private String nome_ataque;
 
-public Ataque(int forca, int acuracia, int pontos_de_poder, Categoria categoria_ataque, String descricao_ataque,
-        String nome_ataque) {
+@ManyToOne
+private Tipo tipo;
+
+public Ataque(int forca, 
+int acuracia, int pontos_de_poder, 
+        Categoria categoria_ataque, 
+        String descricao_ataque,
+        String nome_ataque,
+        Tipo tipo) {
     this.forca = forca;
     this.acuracia = acuracia;
     this.pontos_de_poder = pontos_de_poder;
     this.categoria = categoria_ataque;
     this.descricao_ataque = descricao_ataque;
     this.nome_ataque = nome_ataque;
+    this.tipo=tipo;
+}
+
+public Tipo getTipo() {
+    return this.tipo;
 }
 
 public int getForca() {
