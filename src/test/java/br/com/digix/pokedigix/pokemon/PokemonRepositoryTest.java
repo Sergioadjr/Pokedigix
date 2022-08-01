@@ -11,8 +11,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import br.com.digix.pokedigix.ataque.AcuraciaInvalidaException;
 import br.com.digix.pokedigix.ataque.Ataque;
 import br.com.digix.pokedigix.ataque.AtaqueBuilder;
+import br.com.digix.pokedigix.ataque.ForcaInvalidaParaCategoriaException;
+import br.com.digix.pokedigix.ataque.TipoInvalidoParaCategoriaException;
 import br.com.digix.pokedigix.tipo.Tipo;
 
 @DataJpaTest
@@ -22,7 +25,7 @@ public class PokemonRepositoryTest {
     private PokemonRespository pokemonRepository;
 
     @Test
-    public void deve_salvar_um_pokemon() {
+    public void deve_salvar_um_pokemon() throws AcuraciaInvalidaException, ForcaInvalidaParaCategoriaException, TipoInvalidoParaCategoriaException {
         Tipo eletrico = new Tipo("Elétrico");
         Ataque ataque = new AtaqueBuilder().construir();
         Pokemon pokemon = new PokemonBuilder().comAtaque(ataque).comTipo(eletrico).construir();
@@ -47,7 +50,7 @@ public class PokemonRepositoryTest {
     }
 
     @Test
-    public void deve_salvar_um_pokemon_com_ataque() {
+    public void deve_salvar_um_pokemon_com_ataque() throws AcuraciaInvalidaException, ForcaInvalidaParaCategoriaException, TipoInvalidoParaCategoriaException {
         Ataque ataque = new AtaqueBuilder().construir();
         Pokemon pokemon = new PokemonBuilder().comAtaque(ataque).construir();
 

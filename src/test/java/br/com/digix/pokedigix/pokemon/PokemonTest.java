@@ -8,13 +8,16 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import br.com.digix.pokedigix.ataque.AcuraciaInvalidaException;
 import br.com.digix.pokedigix.ataque.Ataque;
 import br.com.digix.pokedigix.ataque.AtaqueBuilder;
+import br.com.digix.pokedigix.ataque.ForcaInvalidaParaCategoriaException;
+import br.com.digix.pokedigix.ataque.TipoInvalidoParaCategoriaException;
 import br.com.digix.pokedigix.tipo.Tipo;
 
 public class PokemonTest {
     @Test
-    public void deve_poder_criar_um_pokemon(){
+    public void deve_poder_criar_um_pokemon() throws AcuraciaInvalidaException, ForcaInvalidaParaCategoriaException, TipoInvalidoParaCategoriaException{
         // Arrange
         Long id = 1L;
         String nome = "Pikachu"; 

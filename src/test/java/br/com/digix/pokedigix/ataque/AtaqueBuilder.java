@@ -22,13 +22,43 @@ public class AtaqueBuilder {
         this.descricaoAtaque = "Um poderoso ataque de raio, com a força de um trovão";
     }
 
-    public Ataque construir() {
-        return new Ataque(forca, acuracia, pontosDePoder, categoria, descricaoAtaque, nomeAtaque, tipo);
-    }
-
-    public AtaqueBuilder comTipo(Tipo tipo2) {
-        tipo = tipo2;
+    
+    public AtaqueBuilder comTipo(Tipo tipo) {
+        this.tipo = tipo;
         return this;
     }
     
+    public AtaqueBuilder comAcuracia(int acuracia) {
+        this.acuracia = acuracia;
+        return this;
+    }
+    
+    public AtaqueBuilder comCategoriaEfeito() {
+        this.categoria = Categoria.EFEITO;
+        return this;
+    }
+
+
+    public AtaqueBuilder comForca(int forca) {
+        this.forca = forca;
+        return this;
+    }
+
+
+    public AtaqueBuilder comCategoria(Categoria categoria) {
+        this.categoria = categoria;
+        return this;
+    }
+    
+    public Ataque construir() throws AcuraciaInvalidaException, ForcaInvalidaParaCategoriaException, TipoInvalidoParaCategoriaException {
+        if (this.categoria.equals(Categoria.EFEITO)) {
+            return new Ataque(acuracia, pontosDePoder, descricaoAtaque, nomeAtaque);
+        } else {
+            return new Ataque(forca, acuracia, pontosDePoder, categoria, descricaoAtaque, nomeAtaque, tipo);
+        }
+  
+    }
+
+
+
 }
