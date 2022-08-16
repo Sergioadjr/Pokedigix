@@ -18,7 +18,8 @@ import br.com.digix.pokedigix.pokemon.Pokemon;
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo_personagem")
-public class Personagem {
+
+public abstract class Personagem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,6 +32,10 @@ public class Personagem {
 
     @OneToMany
     protected Collection<Pokemon> pokemons;
+
+    public Collection<Pokemon> getPokemons() {
+        return pokemons;
+    }
 
     public Personagem(String nome, Endereco endereco) {
         this.nome = nome;
@@ -61,5 +66,7 @@ public class Personagem {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
+
+ 
 
 }

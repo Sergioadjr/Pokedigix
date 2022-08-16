@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -17,6 +18,7 @@ import br.com.digix.pokedigix.ataque.AtaqueBuilder;
 import br.com.digix.pokedigix.ataque.ForcaInvalidaParaCategoriaException;
 import br.com.digix.pokedigix.ataque.TipoInvalidoParaCategoriaException;
 import br.com.digix.pokedigix.tipo.Tipo;
+import br.com.digix.pokedigix.tipo.TipoRepository;
 
 @DataJpaTest
 public class PokemonRepositoryTest {
@@ -25,7 +27,7 @@ public class PokemonRepositoryTest {
     private PokemonRespository pokemonRepository;
 
     @Test
-    public void deve_salvar_um_pokemon() throws AcuraciaInvalidaException, ForcaInvalidaParaCategoriaException, TipoInvalidoParaCategoriaException {
+    public void deve_salvar_um_pokemon() throws Exception {
         Tipo eletrico = new Tipo("Elétrico");
         Ataque ataque = new AtaqueBuilder().construir();
         Pokemon pokemon = new PokemonBuilder().comAtaque(ataque).comTipo(eletrico).construir();
@@ -36,7 +38,7 @@ public class PokemonRepositoryTest {
     }
 
     @Test
-    public void deve_salvar_um_pokemon_com_tipo() {
+    public void deve_salvar_um_pokemon_com_tipo() throws Exception {
         int quantidadeDeTiposEsperada = 1;
         Tipo eletrico = new Tipo("Elétrico");
         Pokemon pikachu = new PokemonBuilder().comTipo(eletrico).construir();
@@ -50,12 +52,13 @@ public class PokemonRepositoryTest {
     }
 
     @Test
-    public void deve_salvar_um_pokemon_com_ataque() throws AcuraciaInvalidaException, ForcaInvalidaParaCategoriaException, TipoInvalidoParaCategoriaException {
+    public void deve_salvar_um_pokemon_com_ataque() throws Exception {
         Ataque ataque = new AtaqueBuilder().construir();
         Pokemon pokemon = new PokemonBuilder().comAtaque(ataque).construir();
 
         pokemonRepository.save(pokemon);
         assertTrue(pokemon.getAtaques().contains(ataque));
     }
+
 
 }

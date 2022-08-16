@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import br.com.digix.pokedigix.ataque.Ataque;
-import br.com.digix.pokedigix.ataque.AtaqueBuilder;
 import br.com.digix.pokedigix.tipo.Tipo;
 
 public class PokemonBuilder {
@@ -31,7 +30,7 @@ public class PokemonBuilder {
         
     }
 
-    public Pokemon construir() {
+    public Pokemon construir() throws NivelDoPokemonInvalidaException, FelicidadeDoPokemonInvalidaException {
         return new Pokemon (nome, genero, nivel, felicidade, altura, peso, pokedex, tipos, ataques);
     }
 
@@ -45,7 +44,20 @@ public class PokemonBuilder {
         return this;
     }
 
+    public PokemonBuilder comNivelMinimo(int nivelMinimo) {
+        this.nivel = nivelMinimo;
+        return this;
+    }
 
+    public PokemonBuilder comNivelMaximo(int nivelMaximo) {
+        this.nivel = nivelMaximo;
+        return this;
+    }
 
+    public PokemonBuilder comFelicidade(int felicidade) {
+        this.felicidade = felicidade;
+        return this;
+        
+    }
     
 }

@@ -31,12 +31,27 @@ public class TipoRepositoryTest {
     }
 
     @Test
-    public void deve_buscar_um_yipo_pelo_nome () {
+    public void deve_buscar_um_tipo_pelo_nome () {
         String nome = "Eletrico";
         Tipo tipo = new Tipo (nome);
         tipoRepository.save(tipo);
 
-        Collection<Tipo> tiposRetornados = tipoRepository.findByNome(nome);
+        Collection<Tipo> tiposRetornados = tipoRepository.findByNomeContaining(nome);
         assertTrue(tiposRetornados.contains(tipo));
+    }
+
+    @Test 
+    public void deve_poder_remover_pelo_nome (){
+        String fada = "fada";
+        String fantasma = "fantasma";
+        tipoRepository.save(new Tipo(fada));
+        tipoRepository.save(new Tipo(fantasma));
+        String nome = "fa";
+        Long quantidadeEsperada = 2l;
+
+        Long quantidadeRemovida = tipoRepository.deleteByNomeContaining(nome);
+
+        assertEquals(quantidadeEsperada, quantidadeRemovida);
+
     }
 }

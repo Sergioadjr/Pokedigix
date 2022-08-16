@@ -1,7 +1,6 @@
 package br.com.digix.pokedigix.personagem;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,7 @@ public class TreinadorRepositoryTest {
     @Autowired
     private TreinadorRepository treinadorRepository;
     @Test
-    public void deve_salvar_um_treinador (){
+    public void deve_salvar_um_treinador () throws Exception{
         //Arrenge
         Treinador treinador = new TreinadorBuilder().construir();
 

@@ -24,6 +24,7 @@ public class Tipo {
     @ManyToMany (mappedBy = "tipos")
     private Collection<Pokemon> pokemons;
     
+    protected Tipo () {};
     
     public Long getId() {
         return this.id;
@@ -46,6 +47,10 @@ public class Tipo {
     }
     public void setPokemons(Collection<Pokemon> pokemons) {
         this.pokemons = pokemons;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
 }
