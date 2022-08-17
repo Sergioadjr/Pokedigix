@@ -47,6 +47,8 @@ public class Ataque {
     @ManyToMany(mappedBy = "ataques")
     private Collection<Pokemon> pokemons;
 
+    protected Ataque () {}
+    
     public Ataque(int forca,
             int acuracia,
             int pontos_de_poder,
